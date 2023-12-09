@@ -1,0 +1,28 @@
+.gameboard-container {
+  padding: 0 47px 50px 47px;
+  .gameboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 32px;
+  }
+
+  .cards {
+    max-width: 842px;
+    height: 844px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: linear-gradient(
+      133deg,
+      rgba(255, 255, 255, 0.6) 0.62%,
+      rgba(255, 255, 255, 0.1) 102.4%
+    );
+    flex-grow: 1;
+    flex-basis: 0;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    column-gap: 20px;
+    row-gap: 24px;
+  }
+}
