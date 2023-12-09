@@ -1,6 +1,7 @@
 .header-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 144px;
 
   position: relative;
   padding-top: 32px;
@@ -12,5 +13,13 @@
     letter-spacing: 0.09px;
     color: #fff;
     margin: 0;
+  }
+
+  .btns-container {
+    position: absolute;
+    right: 10px;
+    padding-right: 47px;
+    display: flex;
+    column-gap: 29px;
   }
 }

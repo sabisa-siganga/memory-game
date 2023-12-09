@@ -1,0 +1,59 @@
+.app-container {
+  .elipses-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    .firstElipse {
+      width: 637px;
+      height: 637px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      translate: -21% -34%;
+      background: radial-gradient(
+        173.71% 216.2% at 171.6% 173.4%,
+        #fff 0%,
+        #3e92ce 100%
+      );
+      filter: blur(75px);
+    }
+    .secondElipse {
+      width: 915px;
+      height: 915px;
+      flex-shrink: 0;
+      border-radius: 915px;
+      position: absolute;
+      top: -318px;
+      right: -72px;
+      background: radial-gradient(
+        173.71% 216.2% at 171.6% 173.4%,
+        #fff 0%,
+        #3e92ce 100%
+      );
+      filter: blur(75px);
+    }
+    .thirdElipse {
+      width: 664px;
+      height: 664px;
+      flex-shrink: 0;
+      border-radius: 664px;
+      position: absolute;
+      bottom: -283px;
+      right: 42px;
+      background: radial-gradient(
+          173.71% 216.2% at 171.6% 173.4%,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(62, 146, 206, 0.3) 100%
+        ),
+        radial-gradient(
+          173.71% 216.2% at 171.6% 173.4%,
+          rgba(255, 255, 255, 0.7) 0%,
+          rgba(62, 146, 206, 0.7) 100%
+        );
+
+      filter: blur(75px);
+    }
+  }
+}
