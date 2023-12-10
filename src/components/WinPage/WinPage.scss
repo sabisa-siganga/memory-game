@@ -1,0 +1,118 @@
+.winpage-container {
+  padding-top: 146px;
+  text-align: center;
+  .win-message {
+    color: #fff;
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0.18px;
+    margin-bottom: 18px;
+  }
+
+  .winner-name {
+    color: #fff;
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 88px;
+    letter-spacing: 0.18px;
+    margin-bottom: 69.42px;
+  }
+
+  .winner-image {
+    margin-bottom: 42.85px;
+  }
+
+  .winplace-display {
+    display: flex;
+    justify-content: center;
+    column-gap: 32px;
+    max-width: 612px;
+    margin: 0 auto;
+
+    .winner-cup {
+      padding-top: 30px;
+
+      .svg {
+        width: 45px;
+        height: 56.487px;
+        flex-shrink: 0;
+      }
+    }
+
+    .score-display {
+      flex-grow: 1;
+      .first-place,
+      .second-place {
+        display: flex;
+        height: 101px;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 16.895px;
+        flex-shrink: 0;
+        border-radius: 5.542px;
+
+        .position {
+          color: #0d4477;
+          font-feature-settings: "clig" off, "liga" off;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          letter-spacing: -0.4px;
+          text-transform: capitalize;
+        }
+
+        .winner {
+          color: #0d4477;
+          font-feature-settings: "clig" off, "liga" off;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          letter-spacing: -0.4px;
+          text-transform: capitalize;
+        }
+        .score {
+          color: #0d4477;
+          font-feature-settings: "clig" off, "liga" off;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          letter-spacing: -0.4px;
+          text-transform: capitalize;
+        }
+      }
+
+      .first-place {
+        background: linear-gradient(92deg, #ffd975 35.31%, #fff 135.61%);
+        margin-bottom: 12px;
+
+        svg {
+          width: 58.517px;
+          height: 72.171px;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .second-place {
+      background: #fff;
+      margin-bottom: 43px;
+
+      svg {
+        width: 66.242px;
+        height: 73.21px;
+        flex-shrink: 0;
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ import cardDeck from "../../utils/cardDeck";
 import { Card as CardInterface } from "../../interfaces/card";
 import { shuffleDeck } from "../../utils/shuffleDeck";
 import MatchDisplay from "../MatchDisplay/MatchDisplay";
+import WinPage from "../WinPage/WinPage";
 
 const GameBoard = () => {
   // const [cards, setCards] = useState<CardInterface[]>([]);
@@ -50,9 +51,10 @@ const GameBoard = () => {
           playerName="2"
           score={10}
           buttonColor="white"
-          shouldPlay={false}
+          shouldPlay
         />
       </div>
+      <WinPage />
     </div>
   );
 };
