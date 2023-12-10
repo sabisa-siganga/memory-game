@@ -1,6 +1,25 @@
 .card-container {
+  border: none;
+  background: transparent;
+  padding: 0;
+
   .card {
     width: 72px;
     height: 112px;
+    background-color: transparent;
+    border: none;
+  }
+
+  &.removed {
+    background: linear-gradient(
+      292deg,
+      rgba(255, 255, 255, 0.6) 0.62%,
+      rgba(255, 255, 255, 0.1) 102.4%
+    );
+    cursor: not-allowed;
+
+    .card {
+      opacity: 0;
+    }
   }
 }

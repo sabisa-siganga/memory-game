@@ -4,10 +4,12 @@ import "./UserPlayer.scss";
 interface Props {
   playerImage: ReactNode;
   player: string;
+  getPlayerName: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
 }
 
 const UserPlayer = (props: Props) => {
-  const { playerImage, player } = props;
+  const { playerImage, player, getPlayerName, value } = props;
   return (
     <div className="image-container">
       <div className="playerImg">{playerImage}</div>
@@ -15,6 +17,11 @@ const UserPlayer = (props: Props) => {
         type="text"
         name="input"
         placeholder={`Name of Player ${player}`}
+        onChange={(event) => {
+          getPlayerName(event);
+        }}
+        value={value}
+        required
       />
     </div>
   );

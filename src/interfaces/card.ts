@@ -9,4 +9,5 @@ export interface Card {
   //   >;
   color: string;
   label: string | number;
+  isRemoved: boolean;
 }

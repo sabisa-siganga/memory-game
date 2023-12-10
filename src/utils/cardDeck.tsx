@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Card } from "../interfaces/card";
 
 import { ReactComponent as Clubs2 } from "../assets/cards/clubs2.svg";
@@ -54,71 +55,95 @@ import { ReactComponent as HeartQ } from "../assets/cards/heartQ.svg";
 
 import { ReactComponent as Joker1 } from "../assets/cards/joker1.svg";
 import { ReactComponent as Joker2 } from "../assets/cards/joker2.svg";
+import { shuffleDeck } from "./shuffleDeck";
+
+type CardDeckHook = [
+  Card[],
+  (firstCardIndex: number, secondCardIndex: number) => void
+];
 
 // Create an array of card objects
-const useCardDeck = () => {
-  const cardDesk: Card[] = [
-    { image: <Clubs2 />, color: "black", label: 2 },
-    { image: <Clubs3 />, color: "black", label: 3 },
-    { image: <Clubs4 />, color: "black", label: 4 },
-    { image: <Clubs5 />, color: "black", label: 5 },
-    { image: <Clubs6 />, color: "black", label: 6 },
-    { image: <Clubs7 />, color: "black", label: 7 },
-    { image: <Clubs8 />, color: "black", label: 8 },
-    { image: <Clubs9 />, color: "black", label: 9 },
-    { image: <Clubs10 />, color: "black", label: 10 },
-    { image: <ClubsJ />, color: "black", label: "J" },
-    { image: <ClubsQ />, color: "black", label: "Q" },
-    { image: <ClubsK />, color: "black", label: "K" },
+function useCardDeck(): CardDeckHook {
+  const [cardDeck, setCardDeck] = useState<Card[]>([]);
 
-    // Diamond
-    { image: <Diamond2 />, color: "red", label: 2 },
-    { image: <Diamond3 />, color: "red", label: 3 },
-    { image: <Diamond4 />, color: "red", label: 4 },
-    { image: <Diamond5 />, color: "red", label: 5 },
-    { image: <Diamond6 />, color: "red", label: 6 },
-    { image: <Diamond7 />, color: "red", label: 7 },
-    { image: <Diamond8 />, color: "red", label: 8 },
-    { image: <Diamond9 />, color: "red", label: 9 },
-    { image: <Diamond10 />, color: "red", label: 10 },
-    { image: <DiamondJ />, color: "red", label: "J" },
-    { image: <DiamondQ />, color: "red", label: "Q" },
-    { image: <DiamondK />, color: "red", label: "K" },
+  useEffect(() => {
+    const data = [
+      { image: <Clubs2 />, color: "black", isRemoved: false, label: 2 },
+      { image: <Clubs3 />, color: "black", isRemoved: false, label: 3 },
+      { image: <Clubs4 />, color: "black", isRemoved: false, label: 4 },
+      { image: <Clubs5 />, color: "black", isRemoved: false, label: 5 },
+      { image: <Clubs6 />, color: "black", isRemoved: false, label: 6 },
+      { image: <Clubs7 />, color: "black", isRemoved: false, label: 7 },
+      { image: <Clubs8 />, color: "black", isRemoved: false, label: 8 },
+      { image: <Clubs9 />, color: "black", isRemoved: false, label: 9 },
+      { image: <Clubs10 />, color: "black", isRemoved: false, label: 10 },
+      { image: <ClubsJ />, color: "black", isRemoved: false, label: "J" },
+      { image: <ClubsQ />, color: "black", isRemoved: false, label: "Q" },
+      { image: <ClubsK />, color: "black", isRemoved: false, label: "K" },
 
-    // Spades
-    { image: <Spade2 />, color: "black", label: 2 },
-    { image: <Spade3 />, color: "black", label: 3 },
-    { image: <Spade4 />, color: "black", label: 4 },
-    { image: <Spade5 />, color: "black", label: 5 },
-    { image: <Spade6 />, color: "black", label: 6 },
-    { image: <Spade7 />, color: "black", label: 7 },
-    { image: <Spade8 />, color: "black", label: 8 },
-    { image: <Spade9 />, color: "black", label: 9 },
-    { image: <Spade10 />, color: "black", label: 10 },
-    { image: <SpadeJ />, color: "black", label: "J" },
-    { image: <SpadeQ />, color: "black", label: "Q" },
-    { image: <SpadeK />, color: "black", label: "K" },
+      // Diamond
+      { image: <Diamond2 />, color: "red", isRemoved: false, label: 2 },
+      { image: <Diamond3 />, color: "red", isRemoved: false, label: 3 },
+      { image: <Diamond4 />, color: "red", isRemoved: false, label: 4 },
+      { image: <Diamond5 />, color: "red", isRemoved: false, label: 5 },
+      { image: <Diamond6 />, color: "red", isRemoved: false, label: 6 },
+      { image: <Diamond7 />, color: "red", isRemoved: false, label: 7 },
+      { image: <Diamond8 />, color: "red", isRemoved: false, label: 8 },
+      { image: <Diamond9 />, color: "red", isRemoved: false, label: 9 },
+      { image: <Diamond10 />, color: "red", isRemoved: false, label: 10 },
+      { image: <DiamondJ />, color: "red", isRemoved: false, label: "J" },
+      { image: <DiamondQ />, color: "red", isRemoved: false, label: "Q" },
+      { image: <DiamondK />, color: "red", isRemoved: false, label: "K" },
 
-    // Hearts
-    { image: <Heart2 />, color: "red", label: 2 },
-    { image: <Heart3 />, color: "red", label: 3 },
-    { image: <Heart4 />, color: "red", label: 4 },
-    { image: <Heart5 />, color: "red", label: 5 },
-    { image: <Heart6 />, color: "red", label: 6 },
-    { image: <Heart7 />, color: "red", label: 7 },
-    { image: <Heart8 />, color: "red", label: 8 },
-    { image: <Heart9 />, color: "red", label: 9 },
-    { image: <Heart10 />, color: "red", label: 10 },
-    { image: <HeartJ />, color: "red", label: "J" },
-    { image: <HeartQ />, color: "red", label: "Q" },
-    { image: <HeartK />, color: "red", label: "K" },
+      // Spades
+      { image: <Spade2 />, color: "black", isRemoved: false, label: 2 },
+      { image: <Spade3 />, color: "black", isRemoved: false, label: 3 },
+      { image: <Spade4 />, color: "black", isRemoved: false, label: 4 },
+      { image: <Spade5 />, color: "black", isRemoved: false, label: 5 },
+      { image: <Spade6 />, color: "black", isRemoved: false, label: 6 },
+      { image: <Spade7 />, color: "black", isRemoved: false, label: 7 },
+      { image: <Spade8 />, color: "black", isRemoved: false, label: 8 },
+      { image: <Spade9 />, color: "black", isRemoved: false, label: 9 },
+      { image: <Spade10 />, color: "black", isRemoved: false, label: 10 },
+      { image: <SpadeJ />, color: "black", isRemoved: false, label: "J" },
+      { image: <SpadeQ />, color: "black", isRemoved: false, label: "Q" },
+      { image: <SpadeK />, color: "black", isRemoved: false, label: "K" },
 
-    // Jokers
-    { image: <Joker1 />, color: "black", label: "joker" },
-    { image: <Joker2 />, color: "red", label: "joker" },
-  ];
+      // Hearts
+      { image: <Heart2 />, color: "red", isRemoved: false, label: 2 },
+      { image: <Heart3 />, color: "red", isRemoved: false, label: 3 },
+      { image: <Heart4 />, color: "red", isRemoved: false, label: 4 },
+      { image: <Heart5 />, color: "red", isRemoved: false, label: 5 },
+      { image: <Heart6 />, color: "red", isRemoved: false, label: 6 },
+      { image: <Heart7 />, color: "red", isRemoved: false, label: 7 },
+      { image: <Heart8 />, color: "red", isRemoved: false, label: 8 },
+      { image: <Heart9 />, color: "red", isRemoved: false, label: 9 },
+      { image: <Heart10 />, color: "red", isRemoved: false, label: 10 },
+      { image: <HeartJ />, color: "red", isRemoved: false, label: "J" },
+      { image: <HeartQ />, color: "red", isRemoved: false, label: "Q" },
+      { image: <HeartK />, color: "red", isRemoved: false, label: "K" },
 
-  return cardDesk;
-};
+      // Jokers
+      { image: <Joker1 />, color: "black", isRemoved: false, label: "joker" },
+      { image: <Joker2 />, color: "red", isRemoved: false, label: "joker" },
+    ];
+
+    setCardDeck(shuffleDeck(data));
+  }, []);
+
+  const removeCards = (firstCardIndex: number, secondCardIndex: number) => {
+    const updateDeck = cardDeck.map((deck, index) => {
+      if (firstCardIndex === index || secondCardIndex === index) {
+        deck.isRemoved = true;
+      }
+
+      return deck;
+    });
+
+    setCardDeck(updateDeck);
+  };
+
+  return [cardDeck, removeCards];
+}
 
 export default useCardDeck;

@@ -1,4 +1,5 @@
 import React from "react";
+import "./MatchDisplay.scss";
 import { ReactComponent as MatchOutcome } from "../../assets/match.svg";
 
 const MatchDisplay = () => {

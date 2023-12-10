@@ -4,57 +4,128 @@ import PlayerCard from "../PlayerCard/PlayerCard";
 import { ReactComponent as PlayerImage1 } from "../../assets/player1.svg";
 import { ReactComponent as PlayerImage2 } from "../../assets/player2.svg";
 import Card from "../Card/Card";
-import cardDeck from "../../utils/cardDeck";
+import useCardDeck from "../../utils/cardDeck";
 import { Card as CardInterface } from "../../interfaces/card";
-import { shuffleDeck } from "../../utils/shuffleDeck";
 import MatchDisplay from "../MatchDisplay/MatchDisplay";
-import WinPage from "../WinPage/WinPage";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import {
+  cardMatch,
+  endGame,
+  increment,
+  switchPlayers,
+} from "../../store/gamePlay";
+
+interface CurrentPlay {
+  card: CardInterface;
+  index: number;
+}
 
 const GameBoard = () => {
-  // const [cards, setCards] = useState<CardInterface[]>([]);
-  const [isMatch, setIsMatch] = useState(false);
-  const cards = cardDeck();
+  const currentPlayer = useAppSelector((state) => state.gamePlay);
+  const [cards, removeCards] = useCardDeck();
+  const [currentPlay, setCurrentPlay] = useState<CurrentPlay | null>(null);
+  const [removedCardsCount, setRemovedCardsCount] = useState(0);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(cardDeck);
-
     // setCards(cardDeck);
-  }, []);
+    console.log(cards);
+  }, [cards]);
+
+  function gameComplete() {
+    let count = removedCardsCount;
+
+    count += 2;
+
+    if (cards.length === count) {
+      dispatch(endGame());
+
+      return;
+    }
+
+    setRemovedCardsCount(count);
+  }
+
+  function itsAMatch(firstIndex: number, secondIndex: number) {
+    dispatch(cardMatch(true));
+
+    setTimeout(() => {
+      dispatch(cardMatch(false));
+    }, 3000);
+
+    dispatch(increment());
+
+    // Removing cards from deck using their indexes
+    console.log("remove cards: ", firstIndex, secondIndex);
+
+    removeCards(firstIndex, secondIndex);
+
+    gameComplete();
+  }
+
+  function onClick(card: CardInterface, index: number) {
+    console.log("current card: ", card, index);
+
+    // If currentPlay is empty means should just add to state
+    if (!currentPlay) {
+      setCurrentPlay({
+        card,
+        index,
+      });
+
+      return;
+    }
+
+    /**
+     * Should compare saved card with the incoming card info, if matching call isMatching action
+     * then should remove matching cards from deck
+     */
+    if (
+      card.color === currentPlay.card.color &&
+      card.label === currentPlay.card.label
+    ) {
+      itsAMatch(index, currentPlay.index);
+    } else {
+      dispatch(switchPlayers());
+    }
+
+    setCurrentPlay(null);
+  }
 
   return (
     <div className="gameboard-container">
       <div className="gameboard">
         <PlayerCard
           image={<PlayerImage1 />}
-          playerName="1"
-          score={10}
+          playerName={currentPlayer.player1.name}
+          score={currentPlayer.player1.score}
           buttonColor="green"
-          shouldPlay
+          shouldPlay={currentPlayer.player1.shouldPlay}
         />
-        {isMatch && <MatchDisplay />}
-        {!isMatch && (
+
+        {currentPlayer.isMatching && <MatchDisplay />}
+        {!currentPlayer.isMatching && (
           <div className="cards">
             {cards.map((card, index) => {
               return (
                 <Card
                   key={`card-${index}`}
-                  image={card.image}
-                  color={card.color}
-                  label={card.label}
+                  info={card}
+                  onClick={(card) => onClick(card, index)}
                 />
               );
             })}
           </div>
         )}
+
         <PlayerCard
           image={<PlayerImage2 />}
-          playerName="2"
-          score={10}
+          playerName={currentPlayer.player2.name}
+          score={currentPlayer.player2.score}
           buttonColor="white"
-          shouldPlay
+          shouldPlay={currentPlayer.player2.shouldPlay}
         />
       </div>
-      <WinPage />
     </div>
   );
 };
