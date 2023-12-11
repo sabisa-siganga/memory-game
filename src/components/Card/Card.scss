@@ -8,6 +8,42 @@
     height: 112px;
     background-color: transparent;
     border: none;
+    position: relative;
+
+    > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .show-back,
+    .show-front {
+      // z-index: 1;
+      transition: all ease-in 0.2s;
+    }
+
+    .show-back {
+      transform: rotateY(0deg);
+      transition-delay: 0.2s;
+    }
+
+    .show-front {
+      transform: rotateY(90deg);
+    }
+
+    &.turn {
+      .show-front {
+        transform: rotateY(0deg);
+        transition-delay: 0.2s;
+      }
+
+      .show-back {
+        transform: rotateY(90deg);
+        transition-delay: 0s;
+      }
+    }
   }
 
   &.removed {

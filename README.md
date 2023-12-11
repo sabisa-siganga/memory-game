@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# Memory Card Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is a memory card game implemented with ReactJS, TypeScript, SASS, Bootstrap, and Redux. The game supports two players who take turns flipping cards and matching pairs. The player with the most cards or the highest score at the end wins.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Shuffled Card Deck**: The card deck is shuffled at the beginning of the game to ensure a random distribution of cards.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Turn-Based Gameplay**: Players take turns clicking on the back of the cards to reveal their fronts.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Card Matching**: When two cards are turned over, the game checks for a match based on number and color. If they match, the player collects the pair, and the cards are removed from the board.
 
-### `npm test`
+- **Redux for State Management**: The game state, including scores, is managed using Redux.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Scoring System**: The game keeps track of each player's score based on the number of matched pairs using Redux.
 
-### `npm run build`
+- **Modal for Player Names**: The game launcher screen uses a modal to collect player names before starting the game.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **ReactJS**: JavaScript library for building user interfaces.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **TypeScript**: The codebase is written in TypeScript, which enhances code maintainability by providing self-documenting benefits and type annotations.
 
-### `npm run eject`
+- **SASS**: I've used SASS to keep the styling of the game screens' maintainable, organized, and easy to update.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Bootstrap**: I utilized Bootstrap to ensure the game screens look great on various devices and screen sizes.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Redux**: State management library for managing application state.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  **Reusable Components**: I've created a set of reusable components to enhance code maintainability and reusability throughout the project.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Installation
 
-## Learn More
+1. **Clone the repository:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   https://github.com/sabisa-siganga/memory-game.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```
+
+2. **Navigate to the project directory:**
+   cd memory-card-game
+
+3. **Install dependencies:**
+   npm install
+
+4.**Start the development server:**
+npm start

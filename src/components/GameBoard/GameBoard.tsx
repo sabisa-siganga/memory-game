@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./GameBoard.scss";
 import PlayerCard from "../PlayerCard/PlayerCard";
 import { ReactComponent as PlayerImage1 } from "../../assets/player1.svg";
 import { ReactComponent as PlayerImage2 } from "../../assets/player2.svg";
 import Card from "../Card/Card";
-import useCardDeck from "../../utils/cardDeck";
 import { Card as CardInterface } from "../../interfaces/card";
 import MatchDisplay from "../MatchDisplay/MatchDisplay";
 import { useAppDispatch, useAppSelector } from "../../store/store";
@@ -14,6 +13,7 @@ import {
   increment,
   switchPlayers,
 } from "../../store/gamePlay";
+import useCardDeck from "../../hooks/useCardDeck";
 
 interface CurrentPlay {
   card: CardInterface;
@@ -26,11 +26,6 @@ const GameBoard = () => {
   const [currentPlay, setCurrentPlay] = useState<CurrentPlay | null>(null);
   const [removedCardsCount, setRemovedCardsCount] = useState(0);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    // setCards(cardDeck);
-    console.log(cards);
-  }, [cards]);
 
   function gameComplete() {
     let count = removedCardsCount;
@@ -76,6 +71,10 @@ const GameBoard = () => {
       return;
     }
 
+    if (currentPlay.index === index) {
+      return;
+    }
+
     /**
      * Should compare saved card with the incoming card info, if matching call isMatching action
      * then should remove matching cards from deck
@@ -112,6 +111,10 @@ const GameBoard = () => {
                   key={`card-${index}`}
                   info={card}
                   onClick={(card) => onClick(card, index)}
+                  showFront={currentPlay?.index === index}
+                  selectedFirstChoice={
+                    !!currentPlay && currentPlay?.index !== index
+                  }
                 />
               );
             })}

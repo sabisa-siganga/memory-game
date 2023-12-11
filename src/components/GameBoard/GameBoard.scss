@@ -9,7 +9,6 @@
 
   .cards {
     max-width: 842px;
-    height: 844px;
     flex-shrink: 0;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.6);
@@ -25,10 +24,16 @@
     column-gap: 20px;
     row-gap: 24px;
     padding: 26px 17px;
-  }
 
-  .play-btn {
-    display: flex;
-    justify-content: center;
+    .play-btn {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  /* Media query for 1364px and below */
+  @media screen and (max-width: 1380px) {
+    .cards {
+      grid-template-columns: repeat(8, 1fr);
+    }
   }
 }
