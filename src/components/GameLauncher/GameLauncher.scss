@@ -1,8 +1,10 @@
+/* Styles for the game launcher container */
 .gameLaunch-container {
   max-width: 915px;
 
   margin: 0 auto 73px;
 
+  /* Styles for the heading within the container */
   h2 {
     color: #fff;
     text-align: center;
@@ -15,6 +17,7 @@
     margin-bottom: 92px;
   }
 
+  /* Styles for the container holding player inputs */
   .players {
     display: flex;
     justify-content: center;
@@ -22,10 +25,13 @@
     column-gap: 66px;
     margin-bottom: 92px;
 
+    /* Additional styles for SVG elements within this container */
     svg {
       display: block;
     }
   }
+
+  /* Styles for the container holding the "Let's Play" button */
   .play-btn {
     display: flex;
     justify-content: center;

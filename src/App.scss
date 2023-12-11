@@ -1,4 +1,6 @@
+/* Styles for the main application container */
 .app-container {
+  /* Styles for the ellipses container */
   .elipses-container {
     position: fixed;
     width: 100%;
@@ -6,6 +8,8 @@
     left: 0;
     top: 0;
     z-index: -1;
+
+    /* Styles for the first ellipse */
     .firstElipse {
       width: 637px;
       height: 637px;
@@ -19,6 +23,8 @@
       );
       filter: blur(75px);
     }
+
+    /* Styles for the second ellipse */
     .secondElipse {
       width: 915px;
       height: 915px;
@@ -34,6 +40,8 @@
       );
       filter: blur(75px);
     }
+
+    /* Styles for the third ellipse */
     .thirdElipse {
       width: 664px;
       height: 664px;

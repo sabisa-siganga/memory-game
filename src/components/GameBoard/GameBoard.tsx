@@ -15,13 +15,17 @@ import {
 } from "../../store/gamePlay";
 import useCardDeck from "../../hooks/useCardDeck";
 
+// Interface representing the current play state
 interface CurrentPlay {
-  card: CardInterface;
-  index: number;
+  card: CardInterface; // Information about the selected card
+  index: number; // Index of the selected card in the deck
 }
 
+// GameBoard component for managing the game board state and interactions
 const GameBoard = () => {
+  // Retrieve the current player state from the Redux store using the useAppSelector hook
   const currentPlayer = useAppSelector((state) => state.gamePlay);
+
   const [cards, removeCards] = useCardDeck();
   const [currentPlay, setCurrentPlay] = useState<CurrentPlay | null>(null);
   const [removedCardsCount, setRemovedCardsCount] = useState(0);

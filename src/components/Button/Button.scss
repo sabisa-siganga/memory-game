@@ -1,3 +1,4 @@
+/* Styles for the button */
 .btn {
   display: flex;
   justify-content: center;
@@ -16,17 +17,21 @@
   font-style: normal;
   text-align: center;
 
+  /* Styles for the button with yellow color */
   &.yellow,
   &.yellow:active {
     background: #f4a236;
     color: #fff;
   }
 
+  /* Styles for the button with red color */
   &.red,
   &.red:active {
     color: #fff;
     background: #d4190c;
   }
+
+  /* Styles for the button with green color */
   &.green,
   &.green:active {
     font-size: 28px;
@@ -37,6 +42,7 @@
     height: 64px;
   }
 
+  /* Styles for the button with white color */
   &.white,
   &.white:active {
     letter-spacing: -0.56px;
@@ -46,6 +52,7 @@
     height: 64px;
   }
 
+  /* Styles for the button with light-blue color */
   &.light-blue,
   &.light-blue:active {
     background: #a7daff;
