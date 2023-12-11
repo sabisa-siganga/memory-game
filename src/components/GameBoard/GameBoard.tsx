@@ -79,6 +79,10 @@ const GameBoard = () => {
     gameComplete();
   }
 
+  function checkJoker(cardOne: string, cardTwo: string) {
+    return cardOne === "joker" && cardTwo === "joker";
+  }
+
   // Function to handle a card click
   function onClick(card: CardInterface, index: number) {
     console.log("current card: ", card, index);
@@ -104,8 +108,9 @@ const GameBoard = () => {
      * Otherwise, switch players.
      */
     if (
-      card.color === currentPlay.card.color &&
-      card.label === currentPlay.card.label
+      (card.color === currentPlay.card.color &&
+        card.label === currentPlay.card.label) ||
+      checkJoker(card.label.toString(), currentPlay.card.label.toString())
     ) {
       itsAMatch(index, currentPlay.index);
     } else {
