@@ -1,4 +1,6 @@
+/* Styles for the image container */
 .image-container {
+  /* Styles for the player image container */
   .playerImg {
     height: 222px;
     margin-bottom: 49px;
@@ -7,6 +9,7 @@
     align-items: flex-end;
   }
 
+  /* Styles for the input field */
   input {
     display: flex;
     padding: 12px 16px;

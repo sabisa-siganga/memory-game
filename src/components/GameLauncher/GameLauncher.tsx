@@ -39,9 +39,9 @@ const GameLauncher = () => {
           <UserPlayer
             playerImage={<FirstPlayer />}
             player="1"
-            getPlayerName={(e) => {
+            getPlayerName={(value) => {
               // Callback function to update Player 1's name in the state
-              setPlayer1Value(e.target.value);
+              setPlayer1Value(value);
             }}
             // Value for Player 1's input field
             value={player1Value}
@@ -51,9 +51,9 @@ const GameLauncher = () => {
           <UserPlayer
             playerImage={<SecondPlayer />}
             player="2"
-            getPlayerName={(e) => {
+            getPlayerName={(value) => {
               // Callback function to update Player 2's name in the state
-              setPlayer2Value(e.target.value);
+              setPlayer2Value(value);
             }}
             // Value for Player 2's input field
             value={player2Value}

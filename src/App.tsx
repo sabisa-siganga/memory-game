@@ -6,7 +6,7 @@ import GameBoard from "./components/GameBoard/GameBoard";
 import { useAppSelector } from "./store/store";
 import WinPage from "./components/WinPage/WinPage";
 
-// Main application container
+// Main application container for the memory card game app
 const App = () => {
   // Retrieve the game state from the Redux store using the useAppSelector hook.
   const gameState = useAppSelector((state) => state.gamePlay.gameState);

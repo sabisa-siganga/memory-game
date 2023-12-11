@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "../interfaces/card";
 
+// Importing card images for each suit and value
 import Clubs2 from "../assets/cards/clubs2.svg";
 import Clubs3 from "../assets/cards/clubs3.svg";
 import Clubs4 from "../assets/cards/clubs4.svg";
@@ -57,6 +58,14 @@ import Joker1 from "../assets/cards/joker1.svg";
 import Joker2 from "../assets/cards/joker2.svg";
 import { shuffleDeck } from "../utils/shuffleDeck";
 
+/**
+ * useCardDeck is a custom React hook for managing a card deck in a game.
+ * It initializes the card deck by shuffling the provided data on mount.
+ * The hook returns the current card deck state and a function to mark cards as removed.
+ *
+ * @param {Array} data - The initial data representing the cards.
+ * @returns {Array} - A tuple containing the current card deck state and a function to remove cards.
+ */
 type CardDeckHook = [
   Card[],
   (firstCardIndex: number, secondCardIndex: number) => void
@@ -64,8 +73,10 @@ type CardDeckHook = [
 
 // Create an array of card objects
 function useCardDeck(): CardDeckHook {
+  // State to hold the card deck
   const [cardDeck, setCardDeck] = useState<Card[]>([]);
 
+  // Shuffle the initial card deck data when the component mounts
   useEffect(() => {
     const data = [
       { image: Clubs2, color: "black", isRemoved: false, label: 2 },
@@ -128,11 +139,15 @@ function useCardDeck(): CardDeckHook {
       { image: Joker2, color: "red", isRemoved: false, label: "joker" },
     ];
 
+    // set the shuffled deck as the state for cardDeck.
     setCardDeck(shuffleDeck(data));
   }, []);
 
+  // Function to remove cards from the deck based on their index.
   const removeCards = (firstCardIndex: number, secondCardIndex: number) => {
+    // Create a new deck by mapping over the current deck.
     const updateDeck = cardDeck.map((deck, index) => {
+      // If the index matches either of the selected cards, mark it as removed.
       if (firstCardIndex === index || secondCardIndex === index) {
         deck.isRemoved = true;
       }
@@ -140,9 +155,12 @@ function useCardDeck(): CardDeckHook {
       return deck;
     });
 
+    // Update the cardDeck state with the modified deck that has removed cards.
     setCardDeck(updateDeck);
   };
 
+  // Return the current card deck state and the function to remove cards
+  // as a tuple for use in the component.
   return [cardDeck, removeCards];
 }
 

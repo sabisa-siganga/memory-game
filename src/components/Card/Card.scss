@@ -1,8 +1,10 @@
+/* Styles for the card container */
 .card-container {
   border: none;
   background: transparent;
   padding: 0;
 
+  /* Styles for the card element */
   .card {
     width: 72px;
     height: 112px;
@@ -10,6 +12,7 @@
     border: none;
     position: relative;
 
+    /* Styles for child div elements */
     > div {
       position: absolute;
       top: 0;
@@ -18,21 +21,25 @@
       height: 100%;
     }
 
+    /* Styles for the back and front of the card */
     .show-back,
     .show-front {
       // z-index: 1;
       transition: all ease-in 0.2s;
     }
 
+    /* Styles for the back of the card */
     .show-back {
       transform: rotateY(0deg);
       transition-delay: 0.2s;
     }
 
+    /* Styles for the front of the card */
     .show-front {
       transform: rotateY(90deg);
     }
 
+    /* Styles for the turned card */
     &.turn {
       .show-front {
         transform: rotateY(0deg);
@@ -46,6 +53,7 @@
     }
   }
 
+  /* Styles for the removed state of the card */
   &.removed {
     background: linear-gradient(
       292deg,
@@ -54,6 +62,7 @@
     );
     cursor: not-allowed;
 
+    /* Styles for the card when in the removed state */
     .card {
       opacity: 0;
     }

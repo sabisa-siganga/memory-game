@@ -4,6 +4,12 @@
 
 This is a memory card game implemented with ReactJS, TypeScript, SASS, Bootstrap, and Redux. The game supports two players who take turns flipping cards and matching pairs. The player with the most cards or the highest score at the end wins.
 
+## Deployment on GitHub Pages
+
+**Deployment Link:** [Memory Card Game](https://sabisa-siganga.github.io/memory-game/)
+
+The Memory Card Game is deployed on GitHub Pages because Github is a versatile and user-friendly platform for hosting static content directly from your GitHub repository. It's particularly well-suited for personal projects, portfolios, documentation, and small to medium-sized web applications.
+
 ## Features
 
 - **Shuffled Card Deck**: The card deck is shuffled at the beginning of the game to ensure a random distribution of cards.
@@ -42,7 +48,7 @@ This is a memory card game implemented with ReactJS, TypeScript, SASS, Bootstrap
    ```
 
 2. **Navigate to the project directory:**
-   cd memory-card-game
+   cd memory-game
 
 3. **Install dependencies:**
    npm install
